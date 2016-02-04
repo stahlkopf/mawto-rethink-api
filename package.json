@@ -1,0 +1,18 @@
+{
+    "name": "q2blog_api",
+    "version": "0.1.0",
+    "description": "Rest API for q2blog demo app",
+    "author": "Lachlan Orr lachlan.orr@q2ebanking.com",
+    "scripts": {
+        "start": "node index.js",
+        "initdb": "node initdb.js"
+    },
+    "dependencies": {
+        "hapi": "12.1.x",
+        "joi": "7.2.x",
+        "boom": "3.1.x",
+        "rethinkdbdash": "2.2.x"
+    },
+    "private": true,
+    "license": "MIT"
+}

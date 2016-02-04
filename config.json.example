@@ -1,0 +1,11 @@
+{
+    "rethinkdb": {
+        "servers": [ {
+            "host": "localhost",
+            "port": 28015
+        } ],
+        "db": "q2blog"
+    },
+
+    "port": 8000
+}
