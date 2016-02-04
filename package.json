@@ -4,8 +4,7 @@
     "description": "Rest API for q2blog demo app",
     "author": "Lachlan Orr lachlan.orr@q2ebanking.com",
     "scripts": {
-        "start": "node index.js",
-        "initdb": "node initdb.js"
+        "start": "node index.js"
     },
     "dependencies": {
         "hapi": "12.1.x",

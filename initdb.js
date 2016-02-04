@@ -31,4 +31,7 @@ r.dbList().then(function(result) {
     {
         return r.tableCreate('articles');
     }
+
+}).then(function(result) {
+    process.exit(0);
 });
