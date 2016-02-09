@@ -16,11 +16,9 @@ $> npm install
 Install RethinkDB:
 https://www.rethinkdb.com/docs/install/
 
-Install the cliend driver for JavaScript:
-https://www.rethinkdb.com/docs/install-drivers/
 
 Open a terminal and start the server:
-$rethinkdb
+$> rethinkdb
 
 
 ###If the db is new and needs initialization:
