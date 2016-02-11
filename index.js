@@ -29,7 +29,7 @@ server.route({
         var q = r.table('articles');
 
         q.run().then(function(result) {
-            reply(result);
+            reply({articles: result});
         });
     }
 });
