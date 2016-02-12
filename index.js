@@ -63,7 +63,7 @@ server.route({
     path: '/articles',
     handler: function(request, reply) {
 
-        article = request.payload;
+        article = request.payload.article;
 
         article.dateCreated = new Date();
         article.dateModified = new Date();
