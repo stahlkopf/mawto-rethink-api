@@ -57,6 +57,26 @@ server.route({
     }
 });
 
+server.route({
+    method: 'DELETE',
+    path: '/articles/{id}',
+    handler: function(request, reply) {
+
+        var q = r.table('articles').filter(r.row('id').eq(request.params.id));
+
+        q.delete().run().then(function(result) {
+            reply(result);
+        });
+    },
+    config: {
+        validate: {
+            params: {
+                'id': Joi.string().guid()
+            }
+        }
+    }
+});
+
 
 server.route({
     method: 'POST',
@@ -64,12 +84,42 @@ server.route({
     handler: function(request, reply) {
 
         article = request.payload.article;
-
         article.dateCreated = new Date();
         article.dateModified = new Date();
         
         r.table('articles').insert(article).run().then(function(result) {
             reply(result);
+        });
+    },
+    config: {
+        validate: {
+            payload: schema.articles
+        }
+    }
+});
+
+server.route({
+    method: 'PUT',
+    path: '/articles/{id}',
+    handler: function(request, reply) {
+
+        var q = r.table('articles').filter(r.row('id').eq(request.params.id));
+
+        q.run().then(function(result) {
+            if (result.length == 0)
+                reply(Boom.notFound());
+            else {
+
+                var newData = request.payload.article;
+                var article = result[0];
+                article.title = newData.title;
+                article.body = newData.body;
+                article.dateModified = new Date();
+
+                r.table('articles').update(article).run().then(function (result) {
+                    reply(result);
+                });
+            }
         });
     },
     config: {

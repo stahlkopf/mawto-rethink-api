@@ -9,8 +9,8 @@ const schemas = {
             id: Joi.string().guid(),
             title: Joi.string().max(100).required(),
             body: Joi.string().required(),
-            dateCreated: Joi.date().timestamp().allow(null),
-            dateModified: Joi.date().timestamp().allow(null)
+            dateCreated: Joi.date().allow(null),
+            dateModified: Joi.date().allow(null)
         }
     }
 }
