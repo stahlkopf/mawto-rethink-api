@@ -24,9 +24,9 @@ server.connection({ port: config.port });
 
 server.route({
     method: 'GET',
-    path: '/articles',
+    path: '/ASB',
     handler: function(request, reply) {
-        var q = r.table('articles');
+        var q = r.table('ArticleSummaryBasic');
 
         q.run().then(function(result) {
             reply({articles: result});
@@ -37,9 +37,9 @@ server.route({
 
 server.route({
     method: 'GET',
-    path: '/articles/{id}',
+    path: '/ASB/{id}',
     handler: function(request, reply) {
-        var q = r.table('articles').filter(r.row('id').eq(request.params.id));
+        var q = r.table('ArticleSummaryBasic').filter(r.row('id').eq(request.params.id));
 
         q.run().then(function(result) {
             if (result.length == 0)
@@ -56,10 +56,10 @@ server.route({
         }
     }
 });
-
+/**
 server.route({
     method: 'DELETE',
-    path: '/articles/{id}',
+    path: '/ASbasic/{id}',
     handler: function(request, reply) {
 
         var q = r.table('articles').filter(r.row('id').eq(request.params.id));
@@ -80,13 +80,13 @@ server.route({
 
 server.route({
     method: 'POST',
-    path: '/articles',
+    path: '/ASBasic',
     handler: function(request, reply) {
 
         article = request.payload.article;
         article.dateCreated = new Date();
         article.dateModified = new Date();
-        
+
         r.table('articles').insert(article).run().then(function(result) {
             reply(result);
         });
@@ -100,7 +100,7 @@ server.route({
 
 server.route({
     method: 'PUT',
-    path: '/articles/{id}',
+    path: '/ASBasic/{id}',
     handler: function(request, reply) {
 
         var q = r.table('articles').filter(r.row('id').eq(request.params.id));
@@ -128,6 +128,7 @@ server.route({
         }
     }
 });
+**/
 
 
 server.start(() => {
