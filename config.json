@@ -1,0 +1,12 @@
+{
+    "rethinkdb": {
+        "servers": [ {
+            "host": "testdata.mawto.com",
+            "port": 28015,
+            "authKey": "atom"
+        } ],
+        "db": "Mawto"
+    },
+
+    "port": 3000
+}

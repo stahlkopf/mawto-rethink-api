@@ -29,7 +29,22 @@ server.route({
         var q = r.table('ArticleSummaryBasic');
 
         q.run().then(function(result) {
-            reply({articles: result});
+            if (result.length == 0)
+                reply(Boom.notFound());
+            else
+                reply(result);
+        });
+    }
+});
+
+server.route({
+    method: 'GET',
+    path: '/ASB/ids',
+    handler: function(request, reply) {
+        var q = r.table('ArticleSummaryBasic').orderBy(r.desc("dateinserted")).pluck("id")
+
+        q.run().then(function(result) {
+            reply(result);
         });
     }
 });
@@ -39,19 +54,19 @@ server.route({
     method: 'GET',
     path: '/ASB/{id}',
     handler: function(request, reply) {
-        var q = r.table('ArticleSummaryBasic').filter(r.row('id').eq(request.params.id));
+        var q = r.table('ArticleSummaryBasic').get(request.params.id);
 
         q.run().then(function(result) {
             if (result.length == 0)
                 reply(Boom.notFound());
             else
-                reply(result[0]);
+                reply(result);
         });
     },
     config: {
         validate: {
             params: {
-                'id': Joi.string().guid()
+                'id': Joi.string().alphanum().min(39).max(41)
             }
         }
     }

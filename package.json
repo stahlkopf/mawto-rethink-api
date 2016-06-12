@@ -1,8 +1,8 @@
 {
-    "name": "q2blog_api",
-    "version": "0.1.0",
-    "description": "Rest API for q2blog demo app",
-    "author": "Lachlan Orr lachlan.orr@q2ebanking.com",
+    "name": "dbapi",
+    "version": "1",
+    "description": "Rest API for mawto",
+    "author": "Mawto",
     "scripts": {
         "start": "node index.js"
     },
